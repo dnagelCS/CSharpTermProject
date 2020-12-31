@@ -85,7 +85,6 @@
             this.priceLabel.Size = new System.Drawing.Size(88, 32);
             this.priceLabel.TabIndex = 5;
             this.priceLabel.Text = "Price";
-            this.priceLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // quantityLabel
             // 

@@ -27,10 +27,5 @@ namespace FinanceProject
             //TODO make a check that a trade is inserted before closing and adding it to the trades table/PnL chart
             this.Close();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
