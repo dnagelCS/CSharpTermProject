@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DailyValuesTableButtonPanel = new System.Windows.Forms.Panel();
+            this.reportTypeCombo = new System.Windows.Forms.ComboBox();
+            this.ReportTypeLabel = new System.Windows.Forms.Label();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TransactionsButton = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.InsertNewTradesButton = new System.Windows.Forms.Button();
             this.PnLlabel = new System.Windows.Forms.Label();
-            this.ReportTypeLabel = new System.Windows.Forms.Label();
-            this.reportTypeCombo = new System.Windows.Forms.ComboBox();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.DailyValuesTableButtonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PnLReportDataGridView)).BeginInit();
@@ -67,6 +67,30 @@
             this.DailyValuesTableButtonPanel.Name = "DailyValuesTableButtonPanel";
             this.DailyValuesTableButtonPanel.Size = new System.Drawing.Size(2448, 151);
             this.DailyValuesTableButtonPanel.TabIndex = 4;
+            // 
+            // reportTypeCombo
+            // 
+            this.reportTypeCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportTypeCombo.FormattingEnabled = true;
+            this.reportTypeCombo.Items.AddRange(new object[] {
+            "Transaction",
+            "PnL",
+            "Chart"});
+            this.reportTypeCombo.Location = new System.Drawing.Point(328, 40);
+            this.reportTypeCombo.Name = "reportTypeCombo";
+            this.reportTypeCombo.Size = new System.Drawing.Size(278, 62);
+            this.reportTypeCombo.TabIndex = 19;
+            // 
+            // ReportTypeLabel
+            // 
+            this.ReportTypeLabel.AutoSize = true;
+            this.ReportTypeLabel.BackColor = System.Drawing.Color.White;
+            this.ReportTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportTypeLabel.Location = new System.Drawing.Point(14, 42);
+            this.ReportTypeLabel.Name = "ReportTypeLabel";
+            this.ReportTypeLabel.Size = new System.Drawing.Size(289, 55);
+            this.ReportTypeLabel.TabIndex = 18;
+            this.ReportTypeLabel.Text = "Report Type";
             // 
             // endDateLabel
             // 
@@ -93,13 +117,13 @@
             // 
             // TransactionsButton
             // 
-            this.TransactionsButton.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TransactionsButton.Location = new System.Drawing.Point(2204, 22);
             this.TransactionsButton.Margin = new System.Windows.Forms.Padding(4);
             this.TransactionsButton.Name = "TransactionsButton";
             this.TransactionsButton.Size = new System.Drawing.Size(222, 107);
             this.TransactionsButton.TabIndex = 13;
-            this.TransactionsButton.Text = "Get";
+            this.TransactionsButton.Text = "Get Data";
             this.TransactionsButton.UseVisualStyleBackColor = true;
             // 
             // StartDate
@@ -166,16 +190,16 @@
             this.chart1.BorderlineColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.PageColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.FrameThin6;
-            chartArea11.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea11);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(1258, 293);
             this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Name = "Series1";
-            series11.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            this.chart1.Series.Add(series11);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(1282, 1312);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chartPrices";
@@ -206,29 +230,12 @@
             this.PnLlabel.TabIndex = 9;
             this.PnLlabel.Text = "Current Report";
             // 
-            // ReportTypeLabel
+            // vScrollBar1
             // 
-            this.ReportTypeLabel.AutoSize = true;
-            this.ReportTypeLabel.BackColor = System.Drawing.Color.White;
-            this.ReportTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportTypeLabel.Location = new System.Drawing.Point(14, 42);
-            this.ReportTypeLabel.Name = "ReportTypeLabel";
-            this.ReportTypeLabel.Size = new System.Drawing.Size(289, 55);
-            this.ReportTypeLabel.TabIndex = 18;
-            this.ReportTypeLabel.Text = "Report Type";
-            // 
-            // reportTypeCombo
-            // 
-            this.reportTypeCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportTypeCombo.FormattingEnabled = true;
-            this.reportTypeCombo.Items.AddRange(new object[] {
-            "Transaction",
-            "PnL",
-            "Chart"});
-            this.reportTypeCombo.Location = new System.Drawing.Point(328, 40);
-            this.reportTypeCombo.Name = "reportTypeCombo";
-            this.reportTypeCombo.Size = new System.Drawing.Size(278, 62);
-            this.reportTypeCombo.TabIndex = 19;
+            this.vScrollBar1.Location = new System.Drawing.Point(0, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(43, 200);
+            this.vScrollBar1.TabIndex = 0;
             // 
             // Form1
             // 
