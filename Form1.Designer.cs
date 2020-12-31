@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DailyValuesTableButtonPanel = new System.Windows.Forms.Panel();
             this.reportTypeCombo = new System.Windows.Forms.ComboBox();
             this.ReportTypeLabel = new System.Windows.Forms.Label();
@@ -44,7 +44,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.InsertNewTradesButton = new System.Windows.Forms.Button();
             this.PnLlabel = new System.Windows.Forms.Label();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.DailyValuesTableButtonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PnLReportDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -190,16 +189,16 @@
             this.chart1.BorderlineColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.PageColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.FrameThin6;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Location = new System.Drawing.Point(1275, 293);
             this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series1";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(1282, 1312);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chartPrices";
@@ -230,13 +229,6 @@
             this.PnLlabel.TabIndex = 9;
             this.PnLlabel.Text = "Current Report";
             // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(0, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(43, 200);
-            this.vScrollBar1.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -246,7 +238,6 @@
             this.BackgroundImage = global::FinanceProject.Properties.Resources.vs_money2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(2618, 1930);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.PnLlabel);
             this.Controls.Add(this.InsertNewTradesButton);
             this.Controls.Add(this.chart1);
@@ -281,7 +272,6 @@
         private System.Windows.Forms.Label PnLlabel;
         private System.Windows.Forms.ComboBox reportTypeCombo;
         private System.Windows.Forms.Label ReportTypeLabel;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
 
