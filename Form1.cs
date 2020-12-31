@@ -20,13 +20,16 @@ namespace FinanceProject
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void InsertNewTradesButton_Click(object sender, EventArgs e)
         {
             TradeForm tradeForm = new TradeForm();
             tradeForm.Show();
-
         }
-
         private void TransactionsButton_Click(object sender, EventArgs e)
         {
             SqlConnection sqlCon = null;
@@ -124,13 +127,6 @@ namespace FinanceProject
             da.Fill(dataset, "table1");
             //____________.AutoGenerateColumns = true;
             //____________.DataSource = dataset.Tables["table1"];
-        }
-
-
-
-        private void TransactionsStartDatePicker_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
     }
