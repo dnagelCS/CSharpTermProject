@@ -65,7 +65,7 @@
             this.DailyValuesTableButtonPanel.Location = new System.Drawing.Point(92, 29);
             this.DailyValuesTableButtonPanel.Margin = new System.Windows.Forms.Padding(4);
             this.DailyValuesTableButtonPanel.Name = "DailyValuesTableButtonPanel";
-            this.DailyValuesTableButtonPanel.Size = new System.Drawing.Size(2448, 151);
+            this.DailyValuesTableButtonPanel.Size = new System.Drawing.Size(2465, 151);
             this.DailyValuesTableButtonPanel.TabIndex = 4;
             // 
             // reportTypeCombo
@@ -121,7 +121,7 @@
             this.TransactionsButton.Location = new System.Drawing.Point(2204, 22);
             this.TransactionsButton.Margin = new System.Windows.Forms.Padding(4);
             this.TransactionsButton.Name = "TransactionsButton";
-            this.TransactionsButton.Size = new System.Drawing.Size(222, 107);
+            this.TransactionsButton.Size = new System.Drawing.Size(244, 107);
             this.TransactionsButton.TabIndex = 13;
             this.TransactionsButton.Text = "Get Data";
             this.TransactionsButton.UseVisualStyleBackColor = true;
@@ -192,7 +192,7 @@
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.FrameThin6;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(1258, 293);
+            this.chart1.Location = new System.Drawing.Point(1275, 293);
             this.chart1.Margin = new System.Windows.Forms.Padding(4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
