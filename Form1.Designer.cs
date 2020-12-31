@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.DailyValuesTableButtonPanel = new System.Windows.Forms.Panel();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -135,6 +135,7 @@
             this.TransactionsStartDatePicker.Name = "TransactionsStartDatePicker";
             this.TransactionsStartDatePicker.Size = new System.Drawing.Size(168, 39);
             this.TransactionsStartDatePicker.TabIndex = 10;
+            this.TransactionsStartDatePicker.Value = new System.DateTime(2019, 7, 1, 14, 47, 0, 0);
             this.TransactionsStartDatePicker.ValueChanged += new System.EventHandler(this.TransactionsStartDatePicker_ValueChanged);
             // 
             // comboBox1
@@ -146,6 +147,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 40);
             this.comboBox1.TabIndex = 9;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // TransactionsLabel
             // 
@@ -178,6 +180,7 @@
             this.PnLReportDataGridView.Location = new System.Drawing.Point(622, 188);
             this.PnLReportDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.PnLReportDataGridView.Name = "PnLReportDataGridView";
+            this.PnLReportDataGridView.RowHeadersVisible = false;
             this.PnLReportDataGridView.RowHeadersWidth = 102;
             this.PnLReportDataGridView.RowTemplate.Height = 40;
             this.PnLReportDataGridView.Size = new System.Drawing.Size(525, 846);
@@ -189,16 +192,16 @@
             this.chart1.BorderlineColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.PageColor = System.Drawing.Color.Transparent;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.FrameThin6;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(1251, 189);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Name = "Series1";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(721, 846);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chartPrices";
@@ -208,7 +211,7 @@
             this.InsertNewTradesButton.BackColor = System.Drawing.Color.Tan;
             this.InsertNewTradesButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InsertNewTradesButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.InsertNewTradesButton.Location = new System.Drawing.Point(-27, 128);
+            this.InsertNewTradesButton.Location = new System.Drawing.Point(61, 230);
             this.InsertNewTradesButton.Margin = new System.Windows.Forms.Padding(2);
             this.InsertNewTradesButton.Name = "InsertNewTradesButton";
             this.InsertNewTradesButton.Size = new System.Drawing.Size(609, 135);
