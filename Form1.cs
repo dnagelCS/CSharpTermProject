@@ -33,7 +33,6 @@ namespace FinanceProject
             sqlCmd.CommandType = CommandType.StoredProcedure;
             sqlCmd.ExecuteNonQuery();
 
-
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
@@ -72,15 +71,30 @@ namespace FinanceProject
             sqlCon = new SqlConnection(strConnect);
             sqlCon.Open();
             //get values
+            String reportType = Convert.ToString(reportTypeCombo.SelectedItem);
             String ticker = Convert.ToString(comboBox1.SelectedItem);
             DateTime startDate = TransactionsStartDatePicker.Value;
             DateTime endDate = endDateTimePicker.Value;
 
-            generatePnL(sqlCon, ticker, startDate, endDate);
-            //generatePortfolio(sqlCon, startDate, endDate);
-            //generateTransaction(sqlCon);
-            //getDailyYield(sqlCon, ticker, startDate, endDate);
-        }
+            switch (reportType)
+            {
+                case "Transaction":
+                    generateTransaction(sqlCon);
+                    break;
+                case "PnL":
+                    generatePnL(sqlCon, ticker, startDate, endDate);
+                    break;
+                case "Portfolio":
+                    generatePortfolio(sqlCon, startDate, endDate);
+                    break;
+                case "Daily Yield":
+                    getDailyYield(sqlCon, ticker, startDate, endDate);
+                    break;
+                default:
+                    Console.WriteLine("None Chosen");
+                    break;
+            }
+     }
 
         private void generatePnL(SqlConnection sqlCon, String ticker, DateTime startDate, DateTime endDate)
         {
@@ -168,5 +182,14 @@ namespace FinanceProject
             Console.WriteLine(value);
         }
 
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reportTypeCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
