@@ -69,7 +69,7 @@ namespace FinanceProject
             sqlCon = new SqlConnection(strConnect);
             sqlCon.Open();
             //get values
-            String ticker = comboBox1.ValueMember;
+            String ticker = Convert.ToString(comboBox1.SelectedItem);
             DateTime startDate = TransactionsStartDatePicker.Value;
             DateTime endDate = endDateTimePicker.Value;
 
