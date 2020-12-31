@@ -29,9 +29,9 @@ namespace FinanceProject
             //TODO make a check that a trade is inserted before closing and adding it to the trades table/PnL chart
             SqlConnection sqlCon = null;
             //get database parameters from App.config file
-            String strServer =   ConfigurationManager.AppSettings["server"];
+            String strServer = ConfigurationManager.AppSettings["server"];
             String strDatabase = ConfigurationManager.AppSettings["database"];
-            String strLogin =    ConfigurationManager.AppSettings["login"];
+            String strLogin = ConfigurationManager.AppSettings["login"];
             String strPassword = ConfigurationManager.AppSettings["password"];
             //open connection to database
             String strConnect = $"Server={strServer};Database={strDatabase};User Id={strLogin};Password={strPassword};";
@@ -53,13 +53,6 @@ namespace FinanceProject
 
             this.Close();
         }
-<<<<<<< HEAD
-=======
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void tickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -70,6 +63,5 @@ namespace FinanceProject
         {
 
         }
->>>>>>> 2d71054fc9c24e0ad61aaf6054015870e774db75
     }
 }
