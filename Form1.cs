@@ -18,8 +18,36 @@ namespace FinanceProject
         public Form1()
         {
             InitializeComponent();
-        }
+            SqlConnection sqlCon = null;
+            //get database parameters from App.config file
+            String strServer = ConfigurationManager.AppSettings["server"];
+            String strDatabase = ConfigurationManager.AppSettings["database"];
+            String strLogin = ConfigurationManager.AppSettings["login"];
+            String strPassword = ConfigurationManager.AppSettings["password"];
+            //open connection to database
+            String strConnect = $"Server={strServer};Database={strDatabase};User Id={strLogin};Password={strPassword};";
+            sqlCon = new SqlConnection(strConnect);
+            sqlCon.Open();
+            //set up call to stored procedure
+            SqlCommand sqlCmd = new SqlCommand("get_available_tickers", sqlCon);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.ExecuteNonQuery();
 
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+            DataSet dataset = new DataSet();
+            da.Fill(dataset, "table1");
+
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    foreach (object item in row.ItemArray)
+                    {
+                        comboBox1.Items.Add(item.ToString());
+                    }
+                }
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -43,15 +71,30 @@ namespace FinanceProject
             sqlCon = new SqlConnection(strConnect);
             sqlCon.Open();
             //get values
-            string ticker = comboBox1.ValueMember;
+            String reportType = Convert.ToString(reportTypeCombo.SelectedItem);
+            String ticker = Convert.ToString(comboBox1.SelectedItem);
             DateTime startDate = TransactionsStartDatePicker.Value;
             DateTime endDate = endDateTimePicker.Value;
-            generatePnL(sqlCon, ticker, startDate, endDate);
-            generatePortfolio(sqlCon, startDate, endDate);
-            generateTransaction(sqlCon);
-            getDailyYield(sqlCon, ticker, startDate, endDate);
-        }
 
+            switch (reportType)
+            {
+                case "Transaction":
+                    generateTransaction(sqlCon);
+                    break;
+                case "PnL":
+                    generatePnL(sqlCon, ticker, startDate, endDate);
+                    break;
+                case "Portfolio":
+                    generatePortfolio(sqlCon, startDate, endDate);
+                    break;
+                case "Daily Yield":
+                    getDailyYield(sqlCon, ticker, startDate, endDate);
+                    break;
+                default:
+                    Console.WriteLine("None Chosen");
+                    break;
+            }
+     }
 
         private void generatePnL(SqlConnection sqlCon, String ticker, DateTime startDate, DateTime endDate)
         {
@@ -59,18 +102,16 @@ namespace FinanceProject
             SqlCommand sqlCmd = new SqlCommand("ticker_daily_pl_report", sqlCon);
             sqlCmd.CommandType = CommandType.StoredProcedure;
             sqlCmd.Parameters.Add("@Ticker", System.Data.SqlDbType.VarChar).Value = ticker;
-            sqlCmd.Parameters.Add("@Start Date", System.Data.SqlDbType.DateTime).Value = startDate;
-            sqlCmd.Parameters.Add("@End Date", System.Data.SqlDbType.DateTime).Value = endDate;
+            sqlCmd.Parameters.Add("@Start", System.Data.SqlDbType.Date).Value = startDate;
+            sqlCmd.Parameters.Add("@End", System.Data.SqlDbType.Date).Value = endDate;
             //execute stored procedure
             sqlCmd.ExecuteNonQuery();
             //get data returned by stored procedure and display it
-
-            //----not sure what to do here-------
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
-            //PnLReportDataGridView.AutoGenerateColumns = true;
-            //PnLReportDataGridView.DataSource = dataset.Tables["table1"];
+            PnLReportDataGridView.AutoGenerateColumns = true;
+            PnLReportDataGridView.DataSource = dataset.Tables["table1"];
         }
 
         private void generatePortfolio(SqlConnection sqlCon, DateTime startDate, DateTime endDate)
@@ -129,5 +170,26 @@ namespace FinanceProject
             //____________.DataSource = dataset.Tables["table1"];
         }
 
+        private void TransactionsStartDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            //Actually do something/get selected value
+            string value = comboBox1.SelectedItem.ToString();
+            Console.WriteLine(value);
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reportTypeCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
