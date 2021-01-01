@@ -110,8 +110,8 @@ namespace FinanceProject
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
-            PnLReportDataGridView.AutoGenerateColumns = true;
-            PnLReportDataGridView.DataSource = dataset.Tables["table1"];
+            ReportDataGridView.AutoGenerateColumns = true;
+            ReportDataGridView.DataSource = dataset.Tables["table1"];
         }
 
         private void generatePortfolio(SqlConnection sqlCon, DateTime startDate, DateTime endDate)
@@ -119,8 +119,8 @@ namespace FinanceProject
             //set up call to stored procedure
             SqlCommand sqlCmd = new SqlCommand("portfolio_daily_pl_report", sqlCon);
             sqlCmd.CommandType = CommandType.StoredProcedure;
-            sqlCmd.Parameters.Add("@Start Date", System.Data.SqlDbType.DateTime).Value = startDate;
-            sqlCmd.Parameters.Add("@End Date", System.Data.SqlDbType.DateTime).Value = endDate;
+            sqlCmd.Parameters.Add("@Start", System.Data.SqlDbType.DateTime).Value = startDate;
+            sqlCmd.Parameters.Add("@End", System.Data.SqlDbType.DateTime).Value = endDate;
             //execute stored procedure
             sqlCmd.ExecuteNonQuery();
             //get data returned by stored procedure and display it
@@ -129,14 +129,14 @@ namespace FinanceProject
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
-            //____________.AutoGenerateColumns = true;
-            //____________.DataSource = dataset.Tables["table1"];
+            ReportDataGridView.AutoGenerateColumns = true;
+            ReportDataGridView.DataSource = dataset.Tables["table1"];
         }
 
         private void generateTransaction(SqlConnection sqlCon)
         {
             //set up call to stored procedure
-            SqlCommand sqlCmd = new SqlCommand("transaction_report", sqlCon);
+            SqlCommand sqlCmd = new SqlCommand("transactions_report", sqlCon);
             sqlCmd.CommandType = CommandType.StoredProcedure;
             //execute stored procedure
             sqlCmd.ExecuteNonQuery();
@@ -146,8 +146,8 @@ namespace FinanceProject
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
-            //____________.AutoGenerateColumns = true;
-            //____________.DataSource = dataset.Tables["table1"];
+            ReportDataGridView.AutoGenerateColumns = true;
+            ReportDataGridView.DataSource = dataset.Tables["table1"];
         }
 
         private void getDailyYield(SqlConnection sqlCon, String ticker, DateTime startDate, DateTime endDate)
@@ -156,8 +156,8 @@ namespace FinanceProject
             SqlCommand sqlCmd = new SqlCommand("get_ticker_daily_yield", sqlCon);
             sqlCmd.CommandType = CommandType.StoredProcedure;
             sqlCmd.Parameters.Add("@Ticker", System.Data.SqlDbType.VarChar).Value = ticker;
-            sqlCmd.Parameters.Add("@Start Date", System.Data.SqlDbType.DateTime).Value = startDate;
-            sqlCmd.Parameters.Add("@End Date", System.Data.SqlDbType.DateTime).Value = endDate;
+            sqlCmd.Parameters.Add("@Start", System.Data.SqlDbType.DateTime).Value = startDate;
+            sqlCmd.Parameters.Add("@End", System.Data.SqlDbType.DateTime).Value = endDate;
             //execute stored procedure
             sqlCmd.ExecuteNonQuery();
             //get data returned by stored procedure and display it
@@ -166,8 +166,8 @@ namespace FinanceProject
             SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
             DataSet dataset = new DataSet();
             da.Fill(dataset, "table1");
-            //____________.AutoGenerateColumns = true;
-            //____________.DataSource = dataset.Tables["table1"];
+            ReportDataGridView.AutoGenerateColumns = true;
+            ReportDataGridView.DataSource = dataset.Tables["table1"];
         }
 
         private void TransactionsStartDatePicker_ValueChanged(object sender, EventArgs e)
