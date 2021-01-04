@@ -42,12 +42,12 @@ namespace FinanceProject
             this.TickerLabel = new System.Windows.Forms.Label();
             this.TransactionsStartDatePicker = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.PnLReportDataGridView = new System.Windows.Forms.DataGridView();
+            this.ReportDataGridView = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.InsertNewTradesButton = new System.Windows.Forms.Button();
             this.PnLlabel = new System.Windows.Forms.Label();
             this.DailyValuesTableButtonPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PnLReportDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -180,18 +180,18 @@ namespace FinanceProject
             this.comboBox1.TabIndex = 9;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
-            // PnLReportDataGridView
+            // ReportDataGridView
             // 
-            this.PnLReportDataGridView.BackgroundColor = System.Drawing.Color.AntiqueWhite;
-            this.PnLReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PnLReportDataGridView.Location = new System.Drawing.Point(52, 189);
-            this.PnLReportDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.PnLReportDataGridView.Name = "PnLReportDataGridView";
-            this.PnLReportDataGridView.RowHeadersVisible = false;
-            this.PnLReportDataGridView.RowHeadersWidth = 102;
-            this.PnLReportDataGridView.RowTemplate.Height = 40;
-            this.PnLReportDataGridView.Size = new System.Drawing.Size(525, 846);
-            this.PnLReportDataGridView.TabIndex = 6;
+            this.ReportDataGridView.BackgroundColor = System.Drawing.Color.AntiqueWhite;
+            this.ReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReportDataGridView.Location = new System.Drawing.Point(52, 189);
+            this.ReportDataGridView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.ReportDataGridView.Name = "PnLReportDataGridView";
+            this.ReportDataGridView.RowHeadersVisible = false;
+            this.ReportDataGridView.RowHeadersWidth = 102;
+            this.ReportDataGridView.RowTemplate.Height = 40;
+            this.ReportDataGridView.Size = new System.Drawing.Size(525, 846);
+            this.ReportDataGridView.TabIndex = 6;
             // 
             // chart1
             // 
@@ -252,7 +252,7 @@ namespace FinanceProject
             this.Controls.Add(this.PnLlabel);
             this.Controls.Add(this.InsertNewTradesButton);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.PnLReportDataGridView);
+            this.Controls.Add(this.ReportDataGridView);
             this.Controls.Add(this.DailyValuesTableButtonPanel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -261,7 +261,7 @@ namespace FinanceProject
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DailyValuesTableButtonPanel.ResumeLayout(false);
             this.DailyValuesTableButtonPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PnLReportDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -270,7 +270,7 @@ namespace FinanceProject
 
         #endregion
         private System.Windows.Forms.Panel DailyValuesTableButtonPanel;
-        private System.Windows.Forms.DataGridView PnLReportDataGridView;
+        private System.Windows.Forms.DataGridView ReportDataGridView;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button InsertNewTradesButton;
         private System.Windows.Forms.DateTimePicker TransactionsStartDatePicker;
