@@ -168,6 +168,37 @@ namespace FinanceProject
             da.Fill(dataset, "table1");
             ReportDataGridView.AutoGenerateColumns = true;
             ReportDataGridView.DataSource = dataset.Tables["table1"];
+
+            UpdateChart(dataset);
+        }
+
+        private void UpdateChart(DataSet dataset)
+        {
+            chart1.Series[0].Points.Clear();
+            var nrRows = dataset.Tables["table1"].Rows.Count;
+            double maxYld = Double.MinValue;
+            double minYld = Double.MaxValue;
+            for (int row = 0; row < nrRows; ++row)
+            {
+                DateTime date = (DateTime)dataset.Tables["table1"].Rows[row].ItemArray[0];
+                double yield;
+                if (dataset.Tables["table1"].Rows[row].ItemArray[1] != null)
+                {
+                    String strYield = Convert.ToString(dataset.Tables["table1"].Rows[row].ItemArray[1]);
+                    if (strYield.Length > 0)
+                    {
+                        yield = Convert.ToDouble(strYield.Remove(strYield.Length - 1, 1));
+                    }
+                    else yield = 0.00;
+                }
+                else yield = 0.00; 
+                chart1.Series[0].Points.AddXY(date, yield);
+
+                if (yield > maxYld) maxYld = yield;
+                if (yield < minYld) minYld = yield;
+            }
+            chart1.ChartAreas[0].AxisY.Maximum = Math.Ceiling(1.1 * maxYld);
+            chart1.ChartAreas[0].AxisY.Minimum = Math.Floor(0.9 * minYld);
         }
 
         private void TransactionsStartDatePicker_ValueChanged(object sender, EventArgs e)
