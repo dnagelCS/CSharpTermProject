@@ -17,6 +17,35 @@ namespace FinanceProject
         public TradeForm()
         {
             InitializeComponent();
+            SqlConnection sqlCon = null;
+            //get database parameters from App.config file
+            String strServer = ConfigurationManager.AppSettings["server"];
+            String strDatabase = ConfigurationManager.AppSettings["database"];
+            String strLogin = ConfigurationManager.AppSettings["login"];
+            String strPassword = ConfigurationManager.AppSettings["password"];
+            //open connection to database
+            String strConnect = $"Server={strServer};Database={strDatabase};User Id={strLogin};Password={strPassword};";
+            sqlCon = new SqlConnection(strConnect);
+            sqlCon.Open();
+            //set up call to stored procedure
+            SqlCommand sqlCmd = new SqlCommand("get_available_tickers", sqlCon);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+            sqlCmd.ExecuteNonQuery();
+
+            SqlDataAdapter da = new SqlDataAdapter(sqlCmd);
+            DataSet dataset = new DataSet();
+            da.Fill(dataset, "table1");
+
+            foreach (DataTable table in dataset.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    foreach (object item in row.ItemArray)
+                    {
+                        tickerComboBox.Items.Add(item.ToString());
+                    }
+                }
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -38,7 +67,7 @@ namespace FinanceProject
             sqlCon = new SqlConnection(strConnect);
             sqlCon.Open();
             //get values
-            string ticker = tickerComboBox.ValueMember;
+            string ticker = Convert.ToString(tickerComboBox.SelectedItem);
             double quantity = Convert.ToDouble(quantityTextBox.Text);
             double price = Convert.ToDouble(priceTextBox.Text);
             //set up call to stored procedure
@@ -56,7 +85,8 @@ namespace FinanceProject
 
         private void tickerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string value = tickerComboBox.SelectedItem.ToString();
+            Console.WriteLine(value);
         }
 
         private void priceTextBox_TextChanged(object sender, EventArgs e)
